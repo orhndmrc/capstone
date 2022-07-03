@@ -1,0 +1,23 @@
+{
+    "name": "capstone",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "test": "mocha script/**.js  --exit true --timeout 6000 --reporter json>reports/test-results.json",
+        "test-sample": "node ./node_modules/mocha/bin/_mocha ./script/*.js --exit true --timeout 10000s",
+        "coverage": "nyc --reporter=lcov npm run test-custom-reporter",
+        "test-mochawesome": "mocha script/**.js --exit true --timeout 6000 --reporter mochawesome",
+        "test-custom-reporter": "mocha  script/** --exit true --timeout 6000 --reporter my-reporter.js"
+    },
+    "dependencies": {
+        "axios": "^0.24.0",
+        "bluestone": "^0.4.40",
+        "mocha": "^9.1.3",
+        "mochawesome": "^7.1.3",
+        "nyc": "^15.1.0",
+        "puppeteer": "^10.2.0",
+        "puppeteer-core": "^10.2.0",
+        "single-file": "git+https://github.com/3wweiweiwu/SingleFile.git",
+        "url-join": "^4.0.1"
+    }
+}
