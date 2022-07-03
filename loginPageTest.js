@@ -1,0 +1,77 @@
+const locator = require('../bluestone-locator.js');
+const projectFunc = require('../bluestone-func.js');
+const puppeteer = require('puppeteer');
+const bluestoneFunc = require('bluestone/ptLibrary/bluestone-func');
+const config = require('../config.js');
+const bluestoneType = require('bluestone/ptLibrary/class/index');
+describe('Login', () => {
+    it('login with valid credentials', async function () {
+        let element, vars, frame;
+        const browser = await puppeteer.launch(config.puppeteer);
+        const page = await browser.newPage();
+        vars = new bluestoneType.VarSaver(__filename, this.runnable().currentRetry());
+        frame = page;
+        await bluestoneFunc.initialize.func(vars, page);
+        await bluestoneFunc.goto.func(frame, 'https://demoqa.com/login');
+        await bluestoneFunc.waitElementExists.func(frame, locator['lohinHeader'], 58579, vars.getSnapshot('Bluestone-Snapshot-1'));
+        await bluestoneFunc.testTextEqual.func(frame, locator['lohinHeader'], 'Login in Book Store');
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 1389127, vars.getSnapshot('Bluestone-Snapshot-3'));
+        await bluestoneFunc.click.func(frame, locator['userNameBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 5836, vars.getSnapshot('Bluestone-Snapshot-5'));
+        await bluestoneFunc.change.func(frame, locator['userNameBox'], 'birsen');
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 3000, vars.getSnapshot('Bluestone-Snapshot-7'));
+        await bluestoneFunc.click.func(frame, locator['passwordBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 13879, vars.getSnapshot('Bluestone-Snapshot-9'));
+        await bluestoneFunc.change.func(frame, locator['passwordBox'], 'B1234567y!-');
+        await bluestoneFunc.waitElementExists.func(frame, locator['loginBtn'], 3000, vars.getSnapshot('Bluestone-Snapshot-11'));
+        await bluestoneFunc.click.func(frame, locator['loginBtn']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['logoutBtn'], '3000', vars.getSnapshot('Bluestone-Snapshot-13'));
+    }).timeout(100000);
+
+    it('login with invalid username', async function () {
+        let element, vars, frame;
+        const browser = await puppeteer.launch(config.puppeteer);
+        const page = await browser.newPage();
+        vars = new bluestoneType.VarSaver(__filename, this.runnable().currentRetry());
+        frame = page;
+        await bluestoneFunc.initialize.func(vars, page);
+        await bluestoneFunc.goto.func(frame, 'https://demoqa.com/login');
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 52469, vars.getSnapshot('Bluestone-Snapshot-1'));
+        await bluestoneFunc.click.func(frame, locator['userNameBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 18591, vars.getSnapshot('Bluestone-Snapshot-3'));
+        await bluestoneFunc.change.func(frame, locator['userNameBox'], 'orhan');
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 3000, vars.getSnapshot('Bluestone-Snapshot-5'));
+        await bluestoneFunc.click.func(frame, locator['passwordBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 4462, vars.getSnapshot('Bluestone-Snapshot-7'));
+        await bluestoneFunc.change.func(frame, locator['passwordBox'], 'B1234567y!-');
+        await bluestoneFunc.waitElementExists.func(frame, locator['loginBtn'], 3000, vars.getSnapshot('Bluestone-Snapshot-9'));
+        await bluestoneFunc.click.func(frame, locator['loginBtn']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['errorMessage'], 15053, vars.getSnapshot('Bluestone-Snapshot-11'));
+        await bluestoneFunc.testTextEqual.func(frame, locator['errorMessage'], 'Invalid username or password!');
+    }).timeout(100000);
+
+    it('login with invalid password', async function () {
+        let element, vars, frame;
+        const browser = await puppeteer.launch(config.puppeteer);
+        const page = await browser.newPage();
+        vars = new bluestoneType.VarSaver(__filename, this.runnable().currentRetry());
+        frame = page;
+        await bluestoneFunc.initialize.func(vars, page);
+        await bluestoneFunc.goto.func(frame, 'https://demoqa.com/login');
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 23825, vars.getSnapshot('Bluestone-Snapshot-1'));
+        await bluestoneFunc.click.func(frame, locator['userNameBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['userNameBox'], 5466, vars.getSnapshot('Bluestone-Snapshot-3'));
+        await bluestoneFunc.change.func(frame, locator['userNameBox'], 'birsen');
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 3000, vars.getSnapshot('Bluestone-Snapshot-5'));
+        await bluestoneFunc.click.func(frame, locator['passwordBox']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['passwordBox'], 10430, vars.getSnapshot('Bluestone-Snapshot-7'));
+        await bluestoneFunc.change.func(frame, locator['passwordBox'], '12345');
+        await bluestoneFunc.waitElementExists.func(frame, locator['loginBtn'], 3000, vars.getSnapshot('Bluestone-Snapshot-9'));
+        await bluestoneFunc.click.func(frame, locator['loginBtn']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['errorMessage'], 646529, vars.getSnapshot('Bluestone-Snapshot-11'));
+        await bluestoneFunc.click.func(frame, locator['errorMessage']);
+        await bluestoneFunc.waitElementExists.func(frame, locator['errorMessage'], 3000, vars.getSnapshot('Bluestone-Snapshot-13'));
+        await bluestoneFunc.testTextEqual.func(frame, locator['errorMessage'], 'Invalid username or password!');
+        await projectFunc.getUrl.func(page, 'https://demoqa.com/login');
+    }).timeout(100000);
+});
