@@ -1,7 +1,7 @@
 let path = require('path')
 module.exports = {
     puppeteer: {
-        headless: true,
+        headless: false,
         defaultViewport: null,
         ignoreHTTPSErrors: true,
         args: [

@@ -5,7 +5,7 @@ const assert = require('assert')
 const axios = require('axios').default
 const urlLib = require('url')
 /**
- * title
+ * Validate current url
  * @param {Page} page 
  * @param {string} expectedUrl Expected url
  * @returns 

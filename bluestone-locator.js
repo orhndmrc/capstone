@@ -33,5 +33,34 @@ module.exports = {
         locator: ['//P[text()=\'Invalid username or password!\']'],
         screenshot: 'componentPic/errorMessage.png',
         displayName: 'errorMessage'
+    },
+    'newUserBtn': {
+        locator: ['//BUTTON[text()=\'New User\']'],
+        screenshot: 'componentPic/newUserBtn.png',
+        displayName: 'newUserBtn'
+    },
+    'newUserNameBx': {
+        locator: ['#firstname'],
+        screenshot: 'componentPic/newUserNameBx.png',
+        displayName: 'newUserNameBx',
+        snapshot: require('./locator/newUserNameBx.json')
+    },
+    'newUserPasswordBx': {
+        locator: ['#lastname'],
+        screenshot: 'componentPic/newUserPasswordBx.png',
+        displayName: 'newUserPasswordBx',
+        snapshot: require('./locator/newUserPasswordBx.json')
+    },
+    'captcha': {
+        locator: ['//IFRAME[@title=\'reCAPTCHA\']'],
+        screenshot: 'componentPic/captcha.png',
+        displayName: 'captcha',
+        snapshot: require('./locator/captcha.json')
+    },
+    'registerBtn': {
+        locator: ['//BUTTON[text()=\'Register\']'],
+        screenshot: 'componentPic/registerBtn.png',
+        displayName: 'registerBtn',
+        snapshot: require('./locator/registerBtn.json')
     }
 };

@@ -1,11 +1,11 @@
 const { Browser, Page, ElementHandle, Frame } = require('puppeteer-core')
-const { ElementSelector } = require('../node_modules/bluestone/ptLibrary/class/ElementSelector')
+const { ElementSelector } = require('bluestone/ptLibrary/class/ElementSelector')
 const bluestoneFunc = require('bluestone').func
 const assert = require('assert')
 const axios = require('axios').default
 const urlLib = require('url')
 /**
- * We want to get the attribute of the dom element and compare it agaisnt the baseline. If there is a difference, a error will be thrown
+ * Validate attribute
  * @param {Frame} frame 
  * @param {ElementSelector} elementSelector 
  * @param {string} attributeName Attribute Name
