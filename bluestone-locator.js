@@ -42,25 +42,21 @@ module.exports = {
     'newUserNameBx': {
         locator: ['#firstname'],
         screenshot: 'componentPic/newUserNameBx.png',
-        displayName: 'newUserNameBx',
-        snapshot: require('./locator/newUserNameBx.json')
+        displayName: 'newUserNameBx'
     },
     'newUserPasswordBx': {
         locator: ['#lastname'],
         screenshot: 'componentPic/newUserPasswordBx.png',
-        displayName: 'newUserPasswordBx',
-        snapshot: require('./locator/newUserPasswordBx.json')
+        displayName: 'newUserPasswordBx'
     },
     'captcha': {
         locator: ['//IFRAME[@title=\'reCAPTCHA\']'],
         screenshot: 'componentPic/captcha.png',
-        displayName: 'captcha',
-        snapshot: require('./locator/captcha.json')
+        displayName: 'captcha'
     },
     'registerBtn': {
         locator: ['//BUTTON[text()=\'Register\']'],
         screenshot: 'componentPic/registerBtn.png',
-        displayName: 'registerBtn',
-        snapshot: require('./locator/registerBtn.json')
+        displayName: 'registerBtn'
     }
 };

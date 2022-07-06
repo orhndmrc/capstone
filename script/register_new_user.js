@@ -13,6 +13,7 @@ describe('Register', () => {
         frame = page;
         await bluestoneFunc.initialize.func(vars, page);
         await bluestoneFunc.goto.func(frame, 'https://demoqa.com/login');
+        await projectFunc.deleteUserById.func('od', 'O1234567d!-', 'https://demoqa.com');
         await bluestoneFunc.waitElementExists.func(frame, locator['newUserBtn'], 13796, vars.getSnapshot('Bluestone-Snapshot-1'));
         await bluestoneFunc.click.func(frame, locator['newUserBtn']);
         await bluestoneFunc.waitElementExists.func(frame, locator['newUserNameBx'], 3000, vars.getSnapshot('Bluestone-Snapshot-3'));

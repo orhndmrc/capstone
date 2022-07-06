@@ -2,10 +2,10 @@ let locators = require('./bluestone-locator')
 let svgSupport = require('./functions/validateSvg')
 let validateAttribute = require('./functions/getAttribute')
 let scroll = require('./functions/scroll')
-let api = require('./functions/apiRequest')
 let getUrl = require('./functions/getUrl')
 let getTitle = require('./functions/getTitle')
 let captcha = require('./functions/captcha')
+let apis = require('./functions/apiRequest')
 module.exports = {
     validateSvgFromLink: {
         func: svgSupport.validateSvgFromLink,
@@ -32,7 +32,7 @@ module.exports = {
         locators: []
     },
     deleteUserById:{
-        func: api.deleteUserById,
+        func: apis.deleteUserById,
         locators: []
     }
 

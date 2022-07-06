@@ -17,8 +17,6 @@
         "nyc": "^15.1.0",
         "puppeteer": "^10.2.0",
         "puppeteer-core": "^10.2.0",
-        "puppeteer-extra": "^3.3.0",
-        "puppeteer-extra-plugin-recaptcha": "^3.6.2",
         "single-file": "git+https://github.com/3wweiweiwu/SingleFile.git",
         "url-join": "^4.0.1"
     }
