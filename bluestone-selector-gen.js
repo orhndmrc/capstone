@@ -40,12 +40,14 @@ function getParentNode(element, cb, stopPoint = null) {
  */
 function createLocatorByContext(element) {
     let output = new Output()
-    if (element.tagName == 'INPUT')
-        return output
+    // if (element.tagName == 'INPUT')
+    //     return output
 
     let title = element.getAttribute('title')
+    let placeHolder = element.getAttribute('placeholder')
     let innerText = element.innerText
     let potentialXPath = [
+        `//${element.tagName}[@placeholder='${placeHolder}']`,
         `//${element.tagName}[text()='${innerText}']`,
         `//${element.tagName}[@title='${title}']`,
     ]
@@ -60,8 +62,33 @@ function createLocatorByContext(element) {
     return output
 }
 
+/**
+ * Generate locator for table cells
+ * @param {HTMLElement} element 
+ * @returns {Output} locator
+ */
+function createTableRowLocator(element){
+    let bigElement = getParentNode(element, item => item.getAttribute('class') == "rt-td")
+    if (bigElement == null ) return createOutput()
+    let bigElement2 = getParentNode(bigElement , item => item.getAttribute('role') == "row")
+    if (bigElement2 == null ) return createOutput()
+    let bigElement3 = getParentNode(bigElement2, item => item.getAttribute('role') == "rowgroup")
+    if (bigElement3 == null ) return createOutput()
+    let bigElement4 = getParentNode(bigElement3, item => item.getAttribute('class') == "rt-tbody")
+    if (bigElement4 == null ) return createOutput()
+
+    let className = bigElement4.getAttribute('class')
+    let texto = element.innerText
+    let locator = `//div[@class='${className}']//span[.="${texto}"]`
+    let elements = getElementByXpath(locator)
+    if(elements.length >1) return createOutput()
+    return createOutput(element,locator)
+
+}
+
+
 export function getLocator(element, selector) {
-    const functionList = [createLocatorByContext]
+    const functionList = [createTableRowLocator,createLocatorByContext]
     let result = createOutput()
     for (let i = 0; i < functionList.length; i++) {
         let currentFunc = functionList[i]

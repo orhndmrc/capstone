@@ -6,6 +6,9 @@ let getUrl = require('./functions/getUrl')
 let getTitle = require('./functions/getTitle')
 let captcha = require('./functions/captcha')
 let apis = require('./functions/apiRequest')
+let scrollToElement = require('./functions/autoScroll')
+let verifyPartialText = require('./functions/verifyIncludeText')
+let itemsinCheckOut = require('./functions/checkoutItemList')
 module.exports = {
     validateSvgFromLink: {
         func: svgSupport.validateSvgFromLink,
@@ -19,20 +22,37 @@ module.exports = {
         func: scroll.scroll,
         locators: []
     },
-    getUrl:{
+    getUrl: {
         func: getUrl.getUrl,
         locators: []
     },
-    getTitle:{
+    createNewUser: {
+        func: apis.registerNewUser,
+        locators: []
+
+    },
+    getTitle: {
         func: getTitle.getTitle,
         locators: []
     },
-    captcha:{
+    captcha: {
         func: captcha.captcha,
         locators: []
     },
-    deleteUserById:{
-        func: apis.deleteUserById,
+    scrollTobottomPage:{
+        func: scrollToElement.scrollToBottomofPage,
+        locators: []
+    },
+    createRandomUser:{
+        func: apis.createRandomUser,
+        locators: []
+    },
+    verifyPartialTex:{
+        func: verifyPartialText.verifyIncludeText,
+        locators: []
+    },
+    verifyItemsNum:{
+        func: itemsinCheckOut.verifyItemsNum,
         locators: []
     }
 
